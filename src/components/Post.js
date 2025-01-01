@@ -1,4 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBars } from "@fortawesome/free-solid-svg-icons";
 
 function Post({ post }) {
   // Generate TOC data
@@ -17,6 +21,8 @@ function Post({ post }) {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
   // State for modal visibility
   const [showTocModal, setShowTocModal] = useState(false);
+  // State for desktop TOC visibility
+  const [showDesktopToc, setShowDesktopToc] = useState(true);
 
   // Ref for the modal content
   const modalContentRef = useRef(null);
@@ -50,7 +56,10 @@ function Post({ post }) {
 
   // Close modal when clicking outside of it
   const handleModalClick = (event) => {
-    if (modalContentRef.current && !modalContentRef.current.contains(event.target)) {
+    if (
+      modalContentRef.current &&
+      !modalContentRef.current.contains(event.target)
+    ) {
       setShowTocModal(false);
     }
   };
@@ -60,9 +69,15 @@ function Post({ post }) {
     setShowTocModal(false);
   };
 
+  // Toggle desktop TOC visibility
+  const toggleDesktopToc = () => {
+    setShowDesktopToc(!showDesktopToc);
+  };
+
   return (
     <div className="post-container">
       <h1>{post.title}</h1>
+
       {/* Non-floating TOC for mobile (below title) */}
       {isMobile && (
         <ul className="table-of-contents non-sticky-toc">
@@ -88,14 +103,14 @@ function Post({ post }) {
           ))}
         </ul>
       )}
-      <div className="content-wrapper">
+
+      <div className={`content-wrapper ${showDesktopToc ? "" : "full-width"}`}>
         {/* Floating TOC icon for mobile */}
         {isMobile && (
           <div
             className={`floating-toc-icon ${showTocModal ? "open" : ""}`}
             onClick={toggleTocModal}
           >
-            {/* Use any icon you prefer */}
             <i className="fas fa-list"></i>
           </div>
         )}
@@ -142,8 +157,15 @@ function Post({ post }) {
           </div>
         )}
 
-        {/* Sticky TOC for desktop */}
+        {/* Show/Hide Desktop TOC Button */}
         {!isMobile && (
+          <button className="toggle-desktop-toc" onClick={toggleDesktopToc}>
+            <FontAwesomeIcon icon={faBars} />
+          </button>
+        )}
+
+        {/* Sticky TOC for desktop */}
+        {!isMobile && showDesktopToc && (
           <ul className="table-of-contents sticky-toc">
             {toc.map((section) => (
               <li key={section.id}>
@@ -169,19 +191,31 @@ function Post({ post }) {
         )}
 
         <div className="post-content">
-          <p>{post.introduction}</p>
+          <ReactMarkdown
+            className="preserve-newlines"
+            remarkPlugins={[remarkGfm]}
+          >
+            {post.introduction}
+          </ReactMarkdown>
 
-          {/* Rest of the content */}
           {post.sections.map((section) => (
             <div key={section.id}>
               <h2 id={`section-${post.id}-${section.id}`}>
                 {section.heading}
               </h2>
-              <p>{section.content}</p>
+              <ReactMarkdown
+                className="preserve-newlines"
+                remarkPlugins={[remarkGfm]}
+              >
+                {section.content}
+              </ReactMarkdown>
               {section.example && (
-                <p>
-                  <i>Example:</i> {section.example}
-                </p>
+                <ReactMarkdown
+                  className="preserve-newlines"
+                  remarkPlugins={[remarkGfm]}
+                >
+                  {"**Example:** " + section.example}
+                </ReactMarkdown>
               )}
 
               {section.subsections &&
@@ -192,13 +226,19 @@ function Post({ post }) {
                     >
                       {subsection.subheading}
                     </h3>
-                    <p style={{ whiteSpace: "pre-line" }}>
+                    <ReactMarkdown
+                      className="preserve-newlines"
+                      remarkPlugins={[remarkGfm]}
+                    >
                       {subsection.content}
-                    </p>
+                    </ReactMarkdown>
                     {subsection.example && (
-                      <p>
-                        <i>Example:</i> {subsection.example}
-                      </p>
+                      <ReactMarkdown
+                        className="preserve-newlines"
+                        remarkPlugins={[remarkGfm]}
+                      >
+                        {"**Example:** " + subsection.example}
+                      </ReactMarkdown>
                     )}
                   </div>
                 ))}
@@ -206,11 +246,19 @@ function Post({ post }) {
           ))}
 
           <h2>Conclusion</h2>
-          <p style={{ whiteSpace: "pre-line" }}>{post.conclusion}</p>
+          <ReactMarkdown
+            className="preserve-newlines"
+            remarkPlugins={[remarkGfm]}
+          >
+            {post.conclusion}
+          </ReactMarkdown>
           {post.conclusionExample && (
-            <p>
-              <i>Example:</i> {post.conclusionExample}
-            </p>
+            <ReactMarkdown
+              className="preserve-newlines"
+              remarkPlugins={[remarkGfm]}
+            >
+              {"**Example:** " + post.conclusionExample}
+            </ReactMarkdown>
           )}
         </div>
       </div>
