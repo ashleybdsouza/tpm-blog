@@ -5,16 +5,25 @@ import PostPage from './pages/PostPage';
 import AboutPage from './pages/AboutPage';
 import ContactPage from './pages/ContactPage';
 import Header from './components/Header';
+import Technologies from './pages/Technologies';
+
 
 function App() {
     return (
         <BrowserRouter basename="/tpm-blog">
           <Header />
             <Routes>
-                <Route path="/" element={<HomePage />} />
+                <Route path="/" element={
+                  <>
+                    <HomePage />
+                    <Technologies />
+                    <ContactPage />
+                  </>
+                } />
                 <Route path="/post/:id" element={<PostPage />} />
                 <Route path="/about" element={<AboutPage />} />
                 <Route path="/contact" element={<ContactPage />} />
+                <Route path="/technologies" element={<Technologies />} />
             </Routes>
         </BrowserRouter>
     );

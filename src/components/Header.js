@@ -28,14 +28,14 @@ function Header() {
             </Link>
           </li>
           <li>
-            <Link to="/#technologies" onClick={() => scrollToSection('technologies')}>
+            <Link to="/technologies" onClick={() => scrollToSection('technologies')}>
               Technologies
             </Link>
           </li>
           <li>
-            <Link to="/#projects" onClick={() => scrollToSection('projects')}>
+            <a href="https://ashleybdsouza.github.io/ashley-portfolio/project-list" target="_blank" rel="noopener noreferrer">
               Projects
-            </Link>
+            </a>
           </li>
           <li>
             <Link to="/contact" onClick={() => scrollToSection('contact')}>

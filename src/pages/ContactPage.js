@@ -2,6 +2,9 @@
 import React from 'react';
 import '../styles/App.css';
 
+// Import Font Awesome icons
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 
 
 function Contact() {
@@ -13,9 +16,11 @@ function Contact() {
       <div className="contact-links">
         <div className="social-icons">
           <a href="https://github.com/ashleybdsouza" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-                      </a>
+            <FontAwesomeIcon icon={faGithub} className="icon" />
+          </a>
           <a href="https://www.linkedin.com/in/ashleybdsouza/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-        </a>
+            <FontAwesomeIcon icon={faLinkedin} className="icon" />
+          </a>
         </div>
       </div>
     </section>
