@@ -368,20 +368,133 @@ body {
 }
 
 /* Larger Screen Styles (Tablet and Desktop) */
+/* src/App.css */
+/* ... other styles ... */
+
+/* Larger Screen Styles (Tablet and Desktop) */
 @media (min-width: 768px) {
-    .toc-modal {
-        position: fixed;
-        top: 20%;
-        left: 0;
-        width: 300px;
-        height: 50%;
-        background-color: rgba(0, 0, 0, 0.5);
-        z-index: 1000;
-        transition: transform 0.3s ease-out;
-        transform: translateX(-100%);
+  /* ... other styles for larger screens ... */
+
+  .toc-modal {
+    position: fixed;
+    top: 20%; /* Adjust as needed */
+    left: 0;
+    width: 300px; /* Adjust as needed */
+    height: 50%;
+    background-color: rgba(0, 0, 0, 0.5); /* Remove if you don't want overlay */
+    z-index: 1000;
+    transition: transform 0.3s ease-out;
+    transform: translateX(-100%);
+    opacity: 0; /* Start as transparent */
+    transition: opacity 0.3s ease-in-out; /* Add transition for opacity */
+  }
+
+  .toc-modal.show {
+    transform: translateX(0);
+    opacity: 1; /* Fade in when shown */
+
+  }
+
+  .toc-modal-content {
+    background-color: #fff;
+    padding: 25px;
+    border-radius: 50px; /* Add rounded corners */
+    box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
+    max-width: 90%;
+    max-height: 80%;
+    overflow-y: auto;
+    width: 100%; /* Make sure modal content takes full width of the modal */
+    margin-left: 0; /* Reset margin for modal content */
+  }
+  .toc-modal-content .table-of-contents {
+        width: auto;
+        white-space: normal;
+  }
+
+    .table-of-contents {
+        width: auto;
     }
-    
-    .toc-modal.show {
-        transform: translateX(0);
+
+    .table-of-contents ul {
+        width: max-content;
     }
+
+  .close-modal {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+  }
+
+  .toc-modal-content ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .toc-modal-content li {
+    margin-bottom: 10px; /* Add spacing between items */
+  }
+
+  .toc-modal-content li a {
+    color: #007bff; /* Or your desired link color */
+    text-decoration: none;
+  }
+
+  .toc-modal-content li a:hover {
+    text-decoration: underline;
+  }
+
+  /* Style for the details and summary in the modal */
+  .toc-modal-content details {
+    margin-bottom: 5px;
+  }
+
+  .toc-modal-content summary {
+    cursor: pointer;
+    font-weight: 600; /* Make summary a bit bolder */
+  }
+
+  .toc-modal-content details[open] summary::before {
+    content: "▾"; /* Downward arrow when open */
+    margin-right: 5px;
+  }
+
+  .toc-modal-content details > summary::before {
+    content: "▸"; /* Right-pointing arrow when closed */
+    margin-right: 5px;
+  }
+
+  /* Adjust spacing for subsections */
+  .toc-modal-content details ul {
+    margin-top: 5px;
+    margin-left: 20px; /* Indent subsections */
+  }
+  .toggle-desktop-toc {
+    position: fixed;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .toggle-desktop-toc:hover {
+    background-color: #0056b3;
+  }
+
+  .toggle-desktop-toc i {
+    font-size: 20px;
+  }
 }

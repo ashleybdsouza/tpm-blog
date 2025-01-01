@@ -168,7 +168,7 @@ In essence, the TPM acts as the central hub for all risk-related activities, ens
                   },
                   {
                     id: 3,
-                    subheading: "Benefits of Proactive Risk Management: Paving the Way for Project Success",
+                    subheading: "1.3 Benefits of Proactive Risk Management: Paving the Way for Project Success",
                     content: `Proactive risk management is not just about avoiding negative consequences; it's also about creating a more predictable, efficient, and ultimately successful project environment. Here are some of the key benefits of a strong risk management approach:
 1. **Improved Project Predictability**: By identifying and addressing risks early on, TPMs can create more realistic project plans and timelines. This leads to greater predictability in terms of delivery dates, resource needs, and overall project outcomes.
 2. **Better Resource Allocation**: When risks are well-understood, resources can be allocated more effectively. Contingency plans can be put in place, and resources can be reserved to address potential issues, minimizing disruptions and optimizing resource utilization.
@@ -181,7 +181,7 @@ In conclusion, a robust risk management process, spearheaded by the TPM, is not 
             },
             {
                 id: 2,
-                heading: "The Risk Management Process – A TPM's Framework",
+                heading: "2. The Risk Management Process – A TPM's Framework",
                 content: "This section outlines the core steps of the risk management process, tailored for a TPM's perspective.",
                 subsections: [
                     {
