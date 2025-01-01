@@ -22,7 +22,9 @@ function Post({ post }) {
   // State for modal visibility
   const [showTocModal, setShowTocModal] = useState(false);
   // State for desktop TOC visibility
-  const [showDesktopToc, setShowDesktopToc] = useState(true);
+  const [showDesktopToc, setShowDesktopToc] = useState(false); // Initially closed on desktop
+  // State to manage the open/closed state of each details element
+  const [openDetails, setOpenDetails] = useState({});
 
   // Ref for the modal content
   const modalContentRef = useRef(null);
@@ -42,16 +44,13 @@ function Post({ post }) {
     setShowTocModal(!showTocModal);
   };
 
-  const handleSummaryClick = (event) => {
-    // Prevent navigation if a details element is being opened or closed
-    if (event.target.tagName === "SUMMARY") {
-      event.preventDefault();
-      // Find the corresponding details element and toggle its open state
-      const detailsElement = event.target.closest("details");
-      if (detailsElement) {
-        detailsElement.open = !detailsElement.open;
-      }
-    }
+  const handleSummaryClick = (event, sectionId) => {
+    event.preventDefault();
+    // Toggle the open state for the clicked section
+    setOpenDetails((prevOpenDetails) => ({
+      ...prevOpenDetails,
+      [sectionId]: !prevOpenDetails[sectionId],
+    }));
   };
 
   // Close modal when clicking outside of it
@@ -81,6 +80,31 @@ function Post({ post }) {
     }
   };
 
+  // Function to close the desktop TOC
+  const closeDesktopToc = () => {
+    setShowDesktopToc(false);
+  };
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (
+        showDesktopToc &&
+        modalContentRef.current &&
+        !modalContentRef.current.contains(event.target)
+      ) {
+        closeDesktopToc();
+      }
+    };
+
+    if (!isMobile) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [showDesktopToc, isMobile]);
+
   return (
     <div className="post-container">
       <h1>{post.title}</h1>
@@ -90,7 +114,7 @@ function Post({ post }) {
         <ul className="table-of-contents non-sticky-toc">
           {toc.map((section) => (
             <li key={section.id}>
-              <details open>
+              <details open={openDetails[section.id]}>
                 <summary
                   onClick={(event) => handleSummaryClick(event, section.id)}
                 >
@@ -138,8 +162,8 @@ function Post({ post }) {
           </div>
         )}
 
-        {/* TOC Modal */}
-        {isMobile && showTocModal && (
+        {/* TOC Modal for mobile and desktop*/}
+        {(isMobile || !showDesktopToc) && showTocModal && (
           <div className="toc-modal" onClick={handleModalClick}>
             <div className="toc-modal-content" ref={modalContentRef}>
               <button className="close-modal" onClick={toggleTocModal}>
@@ -148,7 +172,7 @@ function Post({ post }) {
               <ul className="table-of-contents">
                 {toc.map((section) => (
                   <li key={section.id}>
-                    <details open>
+                    <details open={openDetails[section.id]}>
                       <summary
                         onClick={(event) =>
                           handleSummaryClick(event, section.id)
@@ -198,46 +222,59 @@ function Post({ post }) {
           </button>
         )}
 
-        {/* Sticky TOC for desktop */}
-        {!isMobile && showDesktopToc && (
-          <ul className="table-of-contents sticky-toc">
-            {toc.map((section) => (
-              <li key={section.id}>
-                <details open>
-                  <summary
-                    onClick={(event) => handleSummaryClick(event, section.id)}
-                  >
-                    <a
-                      href={`#${section.id}`}
-                      onClick={(e) => {
-                        e.preventDefault();
-                        smoothScrollTo(section.id);
-                      }}
-                    >
-                      {section.title}
-                    </a>
-                  </summary>
-                  {section.subsections && (
-                    <ul>
-                      {section.subsections.map((subsection) => (
-                        <li key={subsection.id}>
-                          <a
-                            href={`#${subsection.id}`}
-                            onClick={(e) => {
-                              e.preventDefault();
-                              smoothScrollTo(subsection.id);
-                            }}
-                          >
-                            {subsection.title}
-                          </a>
-                        </li>
-                      ))}
-                    </ul>
-                  )}
-                </details>
-              </li>
-            ))}
-          </ul>
+        {/* TOC for desktop (modal) */}
+        {!isMobile && (
+          <div
+            className={`toc-modal ${showDesktopToc ? "show" : ""}`}
+            onClick={(e) => {
+              if (e.target.classList.contains('toc-modal')) {
+                closeDesktopToc();
+              }
+            }}
+          >
+            <div className="toc-modal-content" ref={modalContentRef}>
+              <ul className="table-of-contents">
+                {toc.map((section) => (
+                  <li key={section.id}>
+                    <details open={openDetails[section.id]}>
+                      <summary
+                        onClick={(event) => {
+                          handleSummaryClick(event, section.id);
+                        }}
+                      >
+                        <a
+                          href={`#${section.id}`}
+                          onClick={(e) => {
+                            e.preventDefault();
+                            smoothScrollTo(section.id);
+                          }}
+                        >
+                          {section.title}
+                        </a>
+                      </summary>
+                      {section.subsections && (
+                        <ul>
+                          {section.subsections.map((subsection) => (
+                            <li key={subsection.id}>
+                              <a
+                                href={`#${subsection.id}`}
+                                onClick={(e) => {
+                                  e.preventDefault();
+                                  smoothScrollTo(subsection.id);
+                                }}
+                              >
+                                {subsection.title}
+                              </a>
+                            </li>
+                          ))}
+                        </ul>
+                      )}
+                    </details>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
         )}
 
         <div className="post-content">
