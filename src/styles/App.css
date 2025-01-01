@@ -6,8 +6,10 @@ body {
   padding: 0;
   background-color: #f4f4f9;
   color: #333;
+  line-height: 1.5;
 }
 
+/* Header Styles */
 .header {
   background-color: #333;
   color: #fff;
@@ -43,31 +45,37 @@ body {
   color: #f4f4f9;
 }
 
+/* Section Styles */
 .section {
   padding: 2rem;
   text-align: center;
 }
 
-.about, .projects, .contact, .technologies {
+.about,
+.projects,
+.contact,
+.technologies {
   background-color: #dcdde0;
   margin: 1rem 0;
   padding: 2rem;
   border-radius: 8px;
 }
 
-.project-list, .technology-list {
+/* Project and Technology List Styles */
+.project-list,
+.technology-list {
   display: flex;
   justify-content: center;
   gap: 2rem;
 }
 
 .project-list {
-  display: flex;
   flex-wrap: wrap;
   width: 100%;
 }
 
-.project-card, .technology-card {
+.project-card,
+.technology-card {
   background-color: #fff;
   padding: 1rem;
   border-radius: 8px;
@@ -75,12 +83,14 @@ body {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.project-card, .technology-card a {
+.project-card a,
+.technology-card a {
   text-decoration: none;
   color: #007bff;
 }
 
-.project-card, .technology-card a:hover {
+.project-card a:hover,
+.technology-card a:hover {
   text-decoration: none;
 }
 
@@ -89,17 +99,30 @@ body {
 }
 
 .project-card h3 {
-  color: black; /* Set h3 text color to black */
+  color: black;
 }
 
 .project-card p {
-  color: gray; /* Set p text color to gray */
+  color: gray;
 }
 
 .project-card img {
   max-width: 100%;
   max-height: 100px;
-  height: auto; /* Maintain aspect ratio */
+  height: auto;
+}
+
+/* Icon and Tooltip Styles */
+.icon {
+  position: relative;
+  display: inline-block;
+  font-size: 1.5rem;
+  color: #333;
+  transition: color 0.3s;
+}
+
+.icon:hover {
+  color: #007bff;
 }
 
 .icon .tooltip {
@@ -107,30 +130,20 @@ body {
   position: absolute;
   padding: 5px 10px;
   border-radius: 4px;
-  font-size: 14px; /* Adjust the size as needed */
-  color: gray; /* Or use a specific hex color like #888 */
+  font-size: 14px;
+  color: gray;
   font-style: italic;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: calc(-55% - 5px);
+  white-space: nowrap;
 }
 
 .icon:hover .tooltip {
   display: block;
 }
 
-.icon {
-  position: relative; /* Make the icon a positioning context */
-  display: inline-block; /* Ensure the icon has a width for centering */
-}
-
-.tooltip {
-  display: block; /* or inline-block if you want to control width */
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  bottom: calc(-55% - 5px); /* Adjust the spacing as needed */
-  white-space: nowrap; /* Prevent the tooltip from wrapping */
-}
-
-/* Add this to style the social icons */
+/* Contact Links Styles */
 .contact-links {
   margin-top: 1rem;
 }
@@ -142,71 +155,32 @@ body {
   margin-top: 0.5rem;
 }
 
-.icon {
-  font-size: 1.5rem;
-  color: #333;
-  transition: color 0.3s;
-}
-
-.icon:hover {
-  color: #007bff;
-}
-
+/* Post Container Styles */
 .post-container {
-    max-width: 800px; /* Limit the width for better readability */
-    margin: 20px auto; /* Center the container with top/bottom margin */
-    padding: 20px; /* Add padding inside the container */
-    text-align: justify; /* Justify text (optional) */
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  text-align: justify;
 }
 
 .post-container h1 {
+  font-size: 2.5rem;
   margin-bottom: 5px;
 }
 
 .post-container h2 {
+  font-size: 2rem;
   margin-top: 10px;
   margin-bottom: 8px;
 }
 
 .post-container h3 {
+  font-size: 1.5rem;
   margin-bottom: 5px;
 }
 
-.table-of-contents {
-    margin-bottom: 20px; /* Add spacing below the TOC */
-}
-
-.table-of-contents a {
-    text-decoration: none; /* Remove underline from links */
-}
-
-.table-of-contents a:hover {
-  text-decoration: underline;
-}
-
-body {
-  font-family: Arial, Helvetica, sans-serif;
-  line-height: 1.5;
-}
-
-.post-container h1 {
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
-}
-
-.post-container h2 {
-  font-size: 2rem;
-  margin-top: 2rem;
-  margin-bottom: 1rem;
-}
-
-.post-container h3 {
-  font-size: 1.5rem;
-  margin-bottom: 0.5rem;
-}
-
 .post-container p {
-  margin-bottom: 1rem; /* Add spacing between paragraphs */
+  margin-bottom: 1rem;
 }
 
 .post-container blockquote {
@@ -216,28 +190,32 @@ body {
   margin: 20px 0;
 }
 
-/* ... other styles ... */
+.post-container blockquote p {
+    display: inline;
+}
 
+/* Content Wrapper Styles */
 .content-wrapper {
   display: flex;
-  justify-content: flex-end; /* Align content to the right */
+  justify-content: flex-end;
 }
 
 .post-content {
-  flex-grow: 1; /* Allow content to grow and take available space */
-  max-width: calc(100% - 60px); /* Adjust based on the button width and margin */
+  flex-grow: 1;
+  max-width: calc(100% - 60px);
 }
 
-.sticky-toc {
-  top: 20px;
-  align-self: flex-start;
-  margin-right: 20px;
-  width: 200px; /* Fixed width for the TOC */
-}
-
-/* Mobile Styles (Default) */
+/* Table of Contents Styles */
 .table-of-contents {
-  width: 100%;
+  margin-bottom: 20px;
+}
+
+.table-of-contents a {
+  text-decoration: none;
+}
+
+.table-of-contents a:hover {
+  text-decoration: underline;
 }
 
 .table-of-contents.non-sticky-toc {
@@ -267,7 +245,19 @@ body {
   display: inline-block;
 }
 
-/* Floating TOC Icon */
+.table-of-contents ul {
+  width: max-content;
+}
+
+/* Sticky TOC Styles */
+.sticky-toc {
+  top: 20px;
+  align-self: flex-start;
+  margin-right: 20px;
+  width: 200px;
+}
+
+/* Floating TOC Icon Styles */
 .floating-toc-icon {
   position: fixed;
   bottom: 20px;
@@ -289,7 +279,7 @@ body {
   background-color: #0056b3;
 }
 
-/* TOC Modal */
+/* TOC Modal Styles */
 .toc-modal {
   position: fixed;
   top: 0;
@@ -312,6 +302,12 @@ body {
   overflow-y: auto;
 }
 
+.toc-modal-content .table-of-contents {
+  width: auto;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
 .close-modal {
   position: absolute;
   top: 10px;
@@ -322,67 +318,55 @@ body {
   cursor: pointer;
 }
 
-/* Larger Screen Styles (Tablet and Desktop) */
-@media (min-width: 768px) {
-  .table-of-contents {
-    width: auto; /* Reset width for sticky TOC */
-  }
-
-  .content-wrapper.full-width .post-content {
-    max-width: 100%; /* Allow content to take full width when TOC is hidden */
-  }
-
-  .sticky-toc {
-    position: sticky;
-    width: 200px;
-  }
-
-  .toggle-desktop-toc {
-    position: fixed; /* Make the button fixed */
-    top: 50%; /* Position it in the vertical center */
-    left: 0; /* Position it on the left edge */
-    transform: translateY(-50%); /* Adjust vertical position to truly center */
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    padding: 5px;
-    border-radius: 0 4px 4px 0;
-    cursor: pointer;
-    z-index: 10; /* Ensure button is above the sticky TOC */
-    display: flex; /* Use flexbox */
-    align-items: center; /* Center the icon vertically */
-    justify-content: center; /* Center the icon horizontally */
-  }
-
-  .toggle-desktop-toc i {
-    font-size: 18px; /* Adjust size as needed */
-    font-size: 20px; /* Adjust icon size */
-
-  }
-
-  .content-wrapper {
-    display: flex;
-    justify-content: flex-start; /* Align content to the left */
-  }
-
-  /* Hide floating icon and modal on desktop */
-  .floating-toc-icon,
-  .toc-modal {
-    display: none;
-  }
-}
-
+/* Preserve Newlines Styles */
 .preserve-newlines {
   white-space: pre-wrap;
 }
 
-blockquote {
-  border-left: 5px solid #ccc; /* Customize the border color */
-  margin: 1.5em 0; /* Adjust margin as needed */
-  padding: 0.5em 1em; /* Adjust padding as needed */
-  font-style: italic;
-}
+/* Media Queries for Larger Screens */
+@media (min-width: 768px) {
+  .content-wrapper {
+    justify-content: space-between;
+  }
 
-blockquote p {
-  display: inline; /* Prevents the blockquote from taking up the full width */
+  .post-content {
+    max-width: calc(100% - 260px);
+    margin-left: 20px;
+  }
+
+  .sticky-toc {
+    position: sticky;
+    width: 250px;
+    overflow-x: auto;
+  }
+
+  .toggle-desktop-toc {
+    position: fixed;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .toggle-desktop-toc:hover {
+    background-color: #0056b3;
+  }
+
+  .toggle-desktop-toc i {
+    font-size: 20px;
+  }
+
+  .floating-toc-icon,
+  .toc-modal {
+    display: none;
+  }
 }
