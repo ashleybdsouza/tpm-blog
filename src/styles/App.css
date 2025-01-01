@@ -198,11 +198,21 @@ body {
 .content-wrapper {
   display: flex;
   justify-content: flex-end;
+  transition: all 0.3s ease; /* Add transition for smooth effect */
+}
+
+.content-wrapper.full-width {
+  justify-content: center;
 }
 
 .post-content {
   flex-grow: 1;
-  max-width: calc(100% - 60px);
+  max-width: calc(100% - 260px);
+  transition: max-width 0.3s ease; /* Add transition for smooth effect */
+}
+
+.content-wrapper.full-width .post-content {
+  max-width: 800px;
 }
 
 /* Table of Contents Styles */
@@ -330,7 +340,7 @@ body {
   }
 
   .post-content {
-    max-width: calc(100% - 260px);
+    /*max-width: calc(100% - 260px);*/
     margin-left: 20px;
   }
 
