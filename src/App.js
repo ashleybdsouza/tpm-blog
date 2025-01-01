@@ -8,7 +8,7 @@ import Header from './components/Header';
 
 function App() {
     return (
-        <BrowserRouter>
+        <BrowserRouter basename="/tpm-blog">
           <Header />
             <Routes>
                 <Route path="/" element={<HomePage />} />

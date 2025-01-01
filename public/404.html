@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Redirecting...</title>
+    <script>
+      // Get the current URL path (e.g., /about, /post/123)
+      const pathname = window.location.pathname;
+
+      // Redirect to /index.html, preserving the original path
+      window.location.replace('/tpm-blog/index.html?route=' + pathname);
+    </script>
+  </head>
+  <body>
+    <p>Redirecting...</p>
+  </body>
+</html>

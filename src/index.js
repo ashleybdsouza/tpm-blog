@@ -1,17 +1,18 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
+import { createRoot } from 'react-dom/client';
 import App from './App';
-import reportWebVitals from './reportWebVitals';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+const root = createRoot(document.getElementById('root'));
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+// Check if this is a redirect from the 404 page
+const searchParams = new URLSearchParams(window.location.search);
+const route = searchParams.get('route');
+
+if (route) {
+  // Remove the query parameter and redirect
+  window.history.replaceState(null, '', '/tpm-blog/');
+  root.render(<App />);
+  // Navigate to the intended route using window.location.hash
+  window.location.hash = route;
+} else {
+  root.render(<App />);
+}
