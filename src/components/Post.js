@@ -111,7 +111,7 @@ function Post({ post }) {
             className={`floating-toc-icon ${showTocModal ? "open" : ""}`}
             onClick={toggleTocModal}
           >
-            <i className="fas fa-list"></i>
+            <FontAwesomeIcon icon={faBars} />
           </div>
         )}
 
@@ -210,12 +210,14 @@ function Post({ post }) {
                 {section.content}
               </ReactMarkdown>
               {section.example && (
-                <ReactMarkdown
-                  className="preserve-newlines"
-                  remarkPlugins={[remarkGfm]}
-                >
-                  {"**Example:** " + section.example}
-                </ReactMarkdown>
+                <blockquote>
+                  <ReactMarkdown
+                    className="preserve-newlines"
+                    remarkPlugins={[remarkGfm]}
+                  >
+                    {"**Example:** " + section.example}
+                  </ReactMarkdown>
+                </blockquote>
               )}
 
               {section.subsections &&
@@ -233,12 +235,14 @@ function Post({ post }) {
                       {subsection.content}
                     </ReactMarkdown>
                     {subsection.example && (
-                      <ReactMarkdown
-                        className="preserve-newlines"
-                        remarkPlugins={[remarkGfm]}
-                      >
-                        {"**Example:** " + subsection.example}
-                      </ReactMarkdown>
+                      <blockquote>
+                        <ReactMarkdown
+                          className="preserve-newlines"
+                          remarkPlugins={[remarkGfm]}
+                        >
+                          {"**Example:** " + subsection.example}
+                        </ReactMarkdown>
+                      </blockquote>
                     )}
                   </div>
                 ))}
@@ -253,12 +257,14 @@ function Post({ post }) {
             {post.conclusion}
           </ReactMarkdown>
           {post.conclusionExample && (
-            <ReactMarkdown
-              className="preserve-newlines"
-              remarkPlugins={[remarkGfm]}
-            >
-              {"**Example:** " + post.conclusionExample}
-            </ReactMarkdown>
+            <blockquote>
+              <ReactMarkdown
+                className="preserve-newlines"
+                remarkPlugins={[remarkGfm]}
+              >
+                {"**Example:** " + post.conclusionExample}
+              </ReactMarkdown>
+            </blockquote>
           )}
         </div>
       </div>
