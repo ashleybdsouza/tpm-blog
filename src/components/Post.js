@@ -42,7 +42,7 @@ function Post({ post }) {
     setShowTocModal(!showTocModal);
   };
 
-  const handleSummaryClick = (event, sectionId) => {
+  const handleSummaryClick = (event) => {
     // Prevent navigation if a details element is being opened or closed
     if (event.target.tagName === "SUMMARY") {
       event.preventDefault();
@@ -74,6 +74,13 @@ function Post({ post }) {
     setShowDesktopToc(!showDesktopToc);
   };
 
+  const smoothScrollTo = (id) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <div className="post-container">
       <h1>{post.title}</h1>
@@ -87,13 +94,29 @@ function Post({ post }) {
                 <summary
                   onClick={(event) => handleSummaryClick(event, section.id)}
                 >
-                  <a href={`#${section.id}`}>{section.title}</a>
+                  <a
+                    href={`#${section.id}`}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      smoothScrollTo(section.id);
+                    }}
+                  >
+                    {section.title}
+                  </a>
                 </summary>
                 {section.subsections && (
                   <ul>
                     {section.subsections.map((subsection) => (
                       <li key={subsection.id}>
-                        <a href={`#${subsection.id}`}>{subsection.title}</a>
+                        <a
+                          href={`#${subsection.id}`}
+                          onClick={(e) => {
+                            e.preventDefault();
+                            smoothScrollTo(subsection.id);
+                          }}
+                        >
+                          {subsection.title}
+                        </a>
                       </li>
                     ))}
                   </ul>
@@ -131,7 +154,14 @@ function Post({ post }) {
                           handleSummaryClick(event, section.id)
                         }
                       >
-                        <a href={`#${section.id}`} onClick={handleTocLinkClick}>
+                        <a
+                          href={`#${section.id}`}
+                          onClick={(e) => {
+                            e.preventDefault();
+                            handleTocLinkClick();
+                            smoothScrollTo(section.id);
+                          }}
+                        >
                           {section.title}
                         </a>
                       </summary>
@@ -141,7 +171,11 @@ function Post({ post }) {
                             <li key={subsection.id}>
                               <a
                                 href={`#${subsection.id}`}
-                                onClick={handleTocLinkClick}
+                                onClick={(e) => {
+                                  e.preventDefault();
+                                  handleTocLinkClick();
+                                  smoothScrollTo(subsection.id);
+                                }}
                               >
                                 {subsection.title}
                               </a>
@@ -173,13 +207,29 @@ function Post({ post }) {
                   <summary
                     onClick={(event) => handleSummaryClick(event, section.id)}
                   >
-                    <a href={`#${section.id}`}>{section.title}</a>
+                    <a
+                      href={`#${section.id}`}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        smoothScrollTo(section.id);
+                      }}
+                    >
+                      {section.title}
+                    </a>
                   </summary>
                   {section.subsections && (
                     <ul>
                       {section.subsections.map((subsection) => (
                         <li key={subsection.id}>
-                          <a href={`#${subsection.id}`}>{subsection.title}</a>
+                          <a
+                            href={`#${subsection.id}`}
+                            onClick={(e) => {
+                              e.preventDefault();
+                              smoothScrollTo(subsection.id);
+                            }}
+                          >
+                            {subsection.title}
+                          </a>
                         </li>
                       ))}
                     </ul>
