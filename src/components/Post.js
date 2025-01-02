@@ -21,10 +21,6 @@ function Post({ post }) {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
   // State for modal visibility
   const [showTocModal, setShowTocModal] = useState(false);
-  // State for desktop TOC visibility
-  const [showDesktopToc, setShowDesktopToc] = useState(false); // Initially closed on desktop
-  // State to manage the open/closed state of each details element
-  const [openDetails, setOpenDetails] = useState({});
 
   // Ref for the modal content
   const modalContentRef = useRef(null);
@@ -44,15 +40,6 @@ function Post({ post }) {
     setShowTocModal(!showTocModal);
   };
 
-  const handleSummaryClick = (event, sectionId) => {
-    event.preventDefault();
-    // Toggle the open state for the clicked section
-    setOpenDetails((prevOpenDetails) => ({
-      ...prevOpenDetails,
-      [sectionId]: !prevOpenDetails[sectionId],
-    }));
-  };
-
   // Close modal when clicking outside of it
   const handleModalClick = (event) => {
     if (
@@ -68,42 +55,12 @@ function Post({ post }) {
     setShowTocModal(false);
   };
 
-  // Toggle desktop TOC visibility
-  const toggleDesktopToc = () => {
-    setShowDesktopToc(!showDesktopToc);
-  };
-
   const smoothScrollTo = (id) => {
     const element = document.getElementById(id);
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
     }
   };
-
-  // Function to close the desktop TOC
-  const closeDesktopToc = () => {
-    setShowDesktopToc(false);
-  };
-
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (
-        showDesktopToc &&
-        modalContentRef.current &&
-        !modalContentRef.current.contains(event.target)
-      ) {
-        closeDesktopToc();
-      }
-    };
-
-    if (!isMobile) {
-      document.addEventListener("mousedown", handleClickOutside);
-    }
-
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [showDesktopToc, isMobile]);
 
   return (
     <div className="post-container">
@@ -114,10 +71,8 @@ function Post({ post }) {
         <ul className="table-of-contents non-sticky-toc">
           {toc.map((section) => (
             <li key={section.id}>
-              <details open={openDetails[section.id]}>
-                <summary
-                  onClick={(event) => handleSummaryClick(event, section.id)}
-                >
+              <details open>
+                <summary>
                   <a
                     href={`#${section.id}`}
                     onClick={(e) => {
@@ -151,7 +106,7 @@ function Post({ post }) {
         </ul>
       )}
 
-      <div className={`content-wrapper ${showDesktopToc ? "" : "full-width"}`}>
+      <div className="content-wrapper">
         {/* Floating TOC icon for mobile */}
         {isMobile && (
           <div
@@ -162,8 +117,8 @@ function Post({ post }) {
           </div>
         )}
 
-        {/* TOC Modal for mobile and desktop*/}
-        {(isMobile || !showDesktopToc) && showTocModal && (
+        {/* TOC Modal for mobile */}
+        {isMobile && showTocModal && (
           <div className="toc-modal" onClick={handleModalClick}>
             <div className="toc-modal-content" ref={modalContentRef}>
               <button className="close-modal" onClick={toggleTocModal}>
@@ -172,12 +127,8 @@ function Post({ post }) {
               <ul className="table-of-contents">
                 {toc.map((section) => (
                   <li key={section.id}>
-                    <details open={openDetails[section.id]}>
-                      <summary
-                        onClick={(event) =>
-                          handleSummaryClick(event, section.id)
-                        }
-                      >
+                    <details open>
+                      <summary>
                         <a
                           href={`#${section.id}`}
                           onClick={(e) => {
@@ -215,65 +166,41 @@ function Post({ post }) {
           </div>
         )}
 
-        {/* Show/Hide Desktop TOC Button */}
+        {/* Sticky TOC for desktop */}
         {!isMobile && (
-          <button className="toggle-desktop-toc" onClick={toggleDesktopToc}>
-            <FontAwesomeIcon icon={faBars} />
-          </button>
-        )}
-
-        {/* TOC for desktop (modal) */}
-        {!isMobile && (
-          <div
-            className={`toc-modal ${showDesktopToc ? "show" : ""}`}
-            onClick={(e) => {
-              if (e.target.classList.contains('toc-modal')) {
-                closeDesktopToc();
-              }
-            }}
-          >
-            <div className="toc-modal-content" ref={modalContentRef}>
-              <ul className="table-of-contents">
-                {toc.map((section) => (
-                  <li key={section.id}>
-                    <details open={openDetails[section.id]}>
-                      <summary
-                        onClick={(event) => {
-                          handleSummaryClick(event, section.id);
-                        }}
-                      >
-                        <a
-                          href={`#${section.id}`}
-                          onClick={(e) => {
-                            e.preventDefault();
-                            smoothScrollTo(section.id);
-                          }}
-                        >
-                          {section.title}
-                        </a>
-                      </summary>
-                      {section.subsections && (
-                        <ul>
-                          {section.subsections.map((subsection) => (
-                            <li key={subsection.id}>
-                              <a
-                                href={`#${subsection.id}`}
-                                onClick={(e) => {
-                                  e.preventDefault();
-                                  smoothScrollTo(subsection.id);
-                                }}
-                              >
-                                {subsection.title}
-                              </a>
-                            </li>
-                          ))}
-                        </ul>
-                      )}
-                    </details>
-                  </li>
-                ))}
-              </ul>
-            </div>
+          <div className="toc-wrapper">
+            <ul className="table-of-contents sticky-toc">
+              {toc.map((section) => (
+                <li key={section.id}>
+                  <a
+                    href={`#${section.id}`}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      smoothScrollTo(section.id);
+                    }}
+                  >
+                    {section.title}
+                  </a>
+                  {section.subsections && (
+                    <ul>
+                      {section.subsections.map((subsection) => (
+                        <li key={subsection.id}>
+                          <a
+                            href={`#${subsection.id}`}
+                            onClick={(e) => {
+                              e.preventDefault();
+                              smoothScrollTo(subsection.id);
+                            }}
+                          >
+                            {subsection.title}
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </li>
+              ))}
+            </ul>
           </div>
         )}
 
@@ -336,23 +263,7 @@ function Post({ post }) {
             </div>
           ))}
 
-          <h2>Conclusion</h2>
-          <ReactMarkdown
-            className="preserve-newlines"
-            remarkPlugins={[remarkGfm]}
-          >
-            {post.conclusion}
-          </ReactMarkdown>
-          {post.conclusionExample && (
-            <blockquote>
-              <ReactMarkdown
-                className="preserve-newlines"
-                remarkPlugins={[remarkGfm]}
-              >
-                {"**Example:** " + post.conclusionExample}
-              </ReactMarkdown>
-            </blockquote>
-          )}
+
         </div>
       </div>
     </div>
