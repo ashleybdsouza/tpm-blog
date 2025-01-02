@@ -3,8 +3,11 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
+import { useLocation } from "react-router-dom"; // import useLocation
 
 function Post({ post }) {
+  const location = useLocation();
+  const currentPath = location.pathname;
   // Generate TOC data
   const toc = post.sections.map((section) => ({
     id: `section-${post.id}-${section.id}`,
@@ -62,6 +65,14 @@ function Post({ post }) {
     }
   };
 
+  // Use the currentPath prop in generating section and subsection IDs
+  const getSectionId = (sectionId) =>
+    `section-${post.id}-${sectionId}${currentPath}`;
+  const getSubsectionId = (sectionId, subsectionId) =>
+    `section-${post.id}-${sectionId}-subsection-${subsectionId}${currentPath}`;
+  const updateHash = (id) => {
+    window.location.hash = id;
+  };
   return (
     <div className="post-container">
       <h1>{post.title}</h1>

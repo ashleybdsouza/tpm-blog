@@ -20,7 +20,7 @@ function App() {
                     <ContactPage />
                   </>
                 } />
-                <Route path="/post/:id" element={<PostPage />} />
+                <Route path="/post/:slug" element={<PostPage />} />
                 <Route path="/about" element={<AboutPage />} />
                 <Route path="/contact" element={<ContactPage />} />
                 <Route path="/technologies" element={<Technologies />} />

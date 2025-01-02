@@ -4,8 +4,7 @@ import blogPostData from '../data';
 
 function HomePage() {
     return (
-        <div>
-            <h1>My Blog</h1>
+        <div class="post-list">
             <PostList posts={blogPostData} />
         </div>
     );

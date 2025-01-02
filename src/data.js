@@ -3,6 +3,7 @@ const blogPostData = [
     {
         id: 1,
         title: "Influence Without Authority: A TPM's Guide to Success",
+        slug: "influence-without-authority",
         author: "Ashley Dsouza",
         date: "December 1, 2024",
         introduction: "As a Technical Program Manager, you're often tasked with driving complex projects across multiple teams, keeping them aligned, and ensuring timely delivery. Sounds like a job that requires a lot of authority, right? But the reality is that TPMs often have limited formal power. You're not managing these teams directly. You're not their boss. So, how do you get things done? The answer lies in your ability to influence without authority. This blog post will dive into practical strategies and tactics to master this crucial skill.",
@@ -137,6 +138,7 @@ So, how do we bridge this gap? How do we effectively drive projects forward with
     {
         id: 2,
         title: "TPM's Guide to Proactive Risk Management: Forewarned is Forearmed",
+        slug: "risk-management",
         author: "Ashley Dsouza",
         date: "December 15, 2024",
         introduction: "As a Technical Program Manager (TPM), you're the captain navigating a complex project through often-turbulent waters. Unexpected storms – in the form of risks – can arise at any moment, threatening to capsize your project or delay its arrival. That's why effective risk management isn't just a \"nice-to-have\" – it's an essential skill for every TPM. This blog post will equip you with the knowledge and tools to proactively identify, assess, mitigate, and monitor risks, keeping your projects on course and setting you up for success.",
@@ -266,6 +268,7 @@ In conclusion, a robust risk management process, spearheaded by the TPM, is not 
     {
       id: 3,
       title: "Dependency Management Mastery:  The Key to Seamless Project Execution",
+      slug: "dependency-management",
       author: "Ashley Dsouza",
       date: "January 1, 2025",
       introduction: "In the intricate world of technical projects, dependencies are the invisible threads that connect different tasks, teams, and components.  A single delayed dependency can trigger a cascade of setbacks, impacting timelines, budgets, and overall project success.  As Technical Program Managers (TPMs), mastering dependency management is not just a valuable skill – it's an absolute necessity.  This section will delve into the art and science of mapping, tracking, and preventing dependency bottlenecks, equipping you with the knowledge to keep your projects running smoothly.",
