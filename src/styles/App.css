@@ -342,3 +342,10 @@ body {
 .preserve-newlines {
   white-space: pre-wrap;
 }
+
+.post-container blockquote {
+  border-left: 5px solid #eee;
+  padding-left: 20px;
+  font-style: italic; /* Add this line to make blockquote text italic */
+  margin: 20px 0;
+}
