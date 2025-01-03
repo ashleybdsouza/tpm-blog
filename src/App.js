@@ -6,11 +6,15 @@ import AboutPage from './pages/AboutPage';
 import ContactPage from './pages/ContactPage';
 import Header from './components/Header';
 import Technologies from './pages/Technologies';
+import GoogleAnalytics from './hooks/useGoogleAnalytics'; // Import the hook
 
 
 function App() {
+      //useGoogleAnalytics(); // Call the hook to initialize and track page views
+
     return (
         <BrowserRouter basename="/tpm-blog">
+         <GoogleAnalytics /> {/* Render the component inside BrowserRouter */}
           <Header />
             <Routes>
                 <Route path="/" element={
