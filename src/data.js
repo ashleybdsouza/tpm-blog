@@ -379,6 +379,33 @@ In conclusion, a robust risk management process, spearheaded by the TPM, is not 
           content: "Mastering dependency management is a critical skill for any TPM. By diligently mapping, tracking, and proactively addressing dependencies, you can minimize disruptions, keep your projects on track, and ultimately deliver successful outcomes. Remember that dependency management is not a one-time activity but an ongoing process that requires vigilance, communication, and collaboration. Embrace these strategies, and you'll be well-equipped to navigate the complex web of dependencies that are inherent in any technical project."
         }
       ],
-    }
+    },
+    {
+        id: 4,
+        title: "Stakeholder Management Strategies",
+        slug: "stakeholder-management",
+        author: "Ashley Dsouza",
+        date: "January 15, 2025",
+        introduction: "Coming Soon",
+        sections: []
+    },
+    {
+        id: 5,
+        title: "Prioritization Frameworks for TPMs",
+        slug: "prioritization-frameworks",
+        author: "Ashley Dsouza",
+        date: "TBD",
+        introduction: "Coming Soon",
+        sections: []
+    },
+    {
+        id: 6,
+        title: "Effective Meeting Facilitation for TPMs",
+        slug: "effective-meeting-facilitation",
+        author: "Ashley Dsouza",
+        date: "TBD",
+        introduction: "Coming Soon",
+        sections: []
+    },
 ];
 export default blogPostData;
