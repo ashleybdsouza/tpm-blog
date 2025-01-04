@@ -159,13 +159,30 @@ body {
 
 /* ... other styles ... */
 
-.post-container, .post-list {
+.post-container,
+.post-list {
   max-width: 1200px;
   margin: 20px auto;
   padding: 20px;
   text-align: justify;
-  word-spacing:-2px;
+  hyphens: auto;
+  -webkit-hyphens: auto; /* For Safari */
+  -ms-hyphens: auto; /* For older versions of IE */
 }
+
+/* Mobile Styles (Default) */
+@media (max-width: 767px) {
+    .post-container, .post-list {
+        text-align: left;
+    }
+}
+
+/*.post-container, .post-list {
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 20px;
+  text-align: justify;
+}*/
 
 .content-wrapper {
   display: flex;
