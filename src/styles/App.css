@@ -164,6 +164,7 @@ body {
   margin: 20px auto;
   padding: 20px;
   text-align: justify;
+  word-spacing:-2px;
 }
 
 .content-wrapper {
@@ -387,4 +388,33 @@ body {
   background-color: #007bff; /* Your primary color */
   color: white;
   border-color: #007bff;
+}
+
+.post-list {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    text-align: justify;
+    word-spacing:-2px;
+}
+
+.post-list h2 {
+  font-size: 1.4rem;
+  margin-top: 10px;
+  margin-bottom: 0.5rem;
+}
+
+.post-list h2 a {
+  color: #007bff; /* A nicer blue color */
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.post-list h2 a:hover {
+  color: #0056b3; /* Darker blue on hover */
+  text-decoration: underline;
+}
+
+.post-list p {
+  margin-bottom: 1rem;
 }
