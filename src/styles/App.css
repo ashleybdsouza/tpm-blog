@@ -435,3 +435,17 @@ body {
 .post-list p {
   margin-bottom: 1rem;
 }
+
+.post-tags {
+  margin-top: 20px; /* Add some space above the tags */
+}
+
+.tag {
+  display: inline-block;
+  background-color: #e9ecef; /* Light gray background */
+  padding: 5px 10px;
+  margin-right: 5px;
+  margin-bottom: 5px;
+  border-radius: 3px;
+  font-size: 0.9rem;
+}
