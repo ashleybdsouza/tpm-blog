@@ -8,9 +8,9 @@ function PostListItem({ post }) {
       <h2>
         <Link to={`/post/${post.slug}`}>{post.title}</Link>
       </h2>
-      <p>{post.introduction.substring(0, 100)}...</p>
+      <p> {post.introduction.substring(0, 100)}...</p>
       <p>
-        By {post.author}, {post.date}
+        <i> - By {post.author}, {post.date} </i>
       </p>
     </div>
   );
