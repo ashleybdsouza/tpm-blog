@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import PostList from '../components/PostList';
-import blogPostData from '../data';
+import React, { useState } from "react";
+import PostList from "../components/PostList";
+import blogPostData from "../data";
 
 function HomePage() {
-  const [searchQuery, setSearchQuery] = useState('');
+  const [searchQuery, setSearchQuery] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const postsPerPage = 5; // Number of posts to display per page
 
@@ -12,9 +12,11 @@ function HomePage() {
     setCurrentPage(1); // Reset to first page on new search
   };
 
-  const filteredPosts = blogPostData.filter((post) =>
-    post.title.toLowerCase().includes(searchQuery.toLowerCase())
-  );
+  const filteredPosts = blogPostData.filter((post) => {
+    const titleMatch = post.title.toLowerCase().includes(searchQuery.toLowerCase());
+    const tagMatch = post.tags && post.tags.some(tag => tag.toLowerCase().includes(searchQuery.toLowerCase()));
+    return titleMatch || tagMatch;
+  });
 
   // Get current posts for the current page
   const indexOfLastPost = currentPage * postsPerPage;
@@ -29,7 +31,7 @@ function HomePage() {
       <div className="search-bar">
         <input
           type="text"
-          placeholder="Search blog posts..."
+          placeholder="Search for a Blog Title or Tag..."
           value={searchQuery}
           onChange={handleSearchChange}
         />
@@ -40,13 +42,20 @@ function HomePage() {
 
       {/* Pagination */}
       <ul className="pagination">
-        {filteredPosts.length > postsPerPage && Array.from({ length: Math.ceil(filteredPosts.length / postsPerPage) }, (_, i) => (
-          <li key={i} className={`page-item ${currentPage === i + 1 ? 'active' : ''}`}>
-            <a onClick={() => paginate(i + 1)} href="#!" className="page-link">
-              {i + 1}
-            </a>
-          </li>
-        ))}
+        {filteredPosts.length > postsPerPage &&
+          Array.from(
+            { length: Math.ceil(filteredPosts.length / postsPerPage) },
+            (_, i) => (
+              <li
+                key={i}
+                className={`page-item ${currentPage === i + 1 ? "active" : ""}`}
+              >
+                <a onClick={() => paginate(i + 1)} href="#!" className="page-link">
+                  {i + 1}
+                </a>
+              </li>
+            )
+          )}
       </ul>
     </div>
   );
