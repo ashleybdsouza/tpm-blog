@@ -1,7 +1,5 @@
 /* src/App.css */
 
-/* src/App.css */
-
 body {
   font-family: Arial, sans-serif;
   margin: 0;
@@ -570,6 +568,14 @@ body {
     width: auto;
   } 
 }
+
 .preserve-newlines {
   white-space: pre-wrap;
+}
+
+#contact {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
