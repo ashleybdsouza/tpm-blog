@@ -23,7 +23,7 @@ So, how do we bridge this gap? How do we effectively drive projects forward with
         id: 2,
         heading: "2. Building Your Influence Toolkit – Key Strategies",
         content:
-          "This is the core of your blog post. Here you'll lay out the strategies for influencing.",
+          "",
         subsections: [
           {
             id: 1,
