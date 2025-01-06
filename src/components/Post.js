@@ -275,7 +275,7 @@ function Post({ post }) {
           ))}
                 <div className="post-tags">
                   <h3>Tags:</h3>
-                      {post.tags && post.tags.slice(0, 5).map((tag) => (
+                      {post.tags && post.tags.slice(0, 10).map((tag) => (
                         <span key={tag} className="tag">
                           {tag}
                         </span>
