@@ -583,8 +583,8 @@ This blog post is your guide to mastering the art of meeting facilitation. We'll
               {
                 id: 4,
                 subheading: "1.4 Start and End on Time", 
-                content: `* **Respect everyone's time: Starting late or running over sends the message that the meeting (and attendees' time) is not important.
-Set expectations: Reinforce the importance of punctuality at the beginning of the meeting.`
+                content: `* **Respect everyone's time**: Starting late or running over sends the message that the meeting (and attendees' time) is not important.
+* **Set expectations**: Reinforce the importance of punctuality at the beginning of the meeting.`
               },
               {
                 id: 5,
@@ -688,7 +688,47 @@ Set expectations: Reinforce the importance of punctuality at the beginning of th
           },
         ],
         tags: [
-            
+             "Meeting Facilitation",
+"Meetings",
+"Productive Meetings",
+"Meeting Management",
+"TPM",
+"Technical Program Manager",
+"Program Management",
+"Project Management",
+"Time Management",
+"Efficiency",
+"Communication",
+"Collaboration",
+"Meeting Agenda",
+"Meeting Minutes",
+"Action Items",
+"Decision Making",
+"Problem Solving",
+"Virtual Meetings",
+"Remote Meetings",
+"Online Meetings",
+"Zoom (or other video conferencing tools you mentioned)",
+"Google Meet (or other video conferencing tools you mentioned)",
+"Microsoft Teams (or other video conferencing tools you mentioned)",
+"Meeting Etiquette",
+"Timeboxing",
+"Parking Lot",
+"Teamwork",
+"Leadership",
+"Facilitation Skills",
+"Meeting Objectives",
+"Agenda Setting",
+"Running Effective Meetings",
+"Keeping Meetings on Track",
+"Virtual Meeting Best Practices",
+"Remote Team Collaboration",
+"Improve Meetings",
+"Stop Wasting Time",
+"Get More Done",
+"Better Meetings",
+"Effective Communication",
+"Team Productivity"
             ],
     },
     {
@@ -700,7 +740,6 @@ Set expectations: Reinforce the importance of punctuality at the beginning of th
         introduction: "Coming Soon",
         sections: [],
         tags: [
-            
             ],
     }
 ];
