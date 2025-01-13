@@ -298,10 +298,19 @@ function Post({ post }) {
         )}
       </div>
       {/* About the Author Section */}
+          {/* About the Author Section */}
           <div className="author-bio">
-            <h3>About the Author</h3>
-            
-            <p className="preserve-newlines">{post.authorBio}</p>
+            <div className="author-image">
+              <img
+                src={post.authorImage}
+                alt={post.author}
+                className="author-img"
+              />
+            </div>
+            <div>
+              <h3>About the Author</h3>
+              <p className="preserve-newlines">{post.authorBio}</p>
+            </div>
           </div>
     </div>
   );

@@ -597,20 +597,63 @@ body {
   text-decoration: underline;
 }
 
+/* src/App.css */
+
+/* ... other styles ... */
+
 .author-bio {
-  margin-top: 40px; /* Add some space above the author bio */
+  margin-top: 40px;
   padding: 20px;
-  border-top: 1px solid #eee; /* Add a separator line */
-  background-color: #f8f8f8; /* A light background color */
+  border-top: 1px solid #eee;
+  background-color: #f8f8f8;
   border-radius: 5px;
+  display: flex;
+  flex-direction: column; /* Stack image and text vertically on mobile */
+  align-items: center; /* Center items on mobile */
+}
+
+.author-image {
+  margin-right: 0; /* Remove horizontal margin on mobile */
+  margin-bottom: 20px; /* Add margin below image on mobile */
+}
+
+.author-img {
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+}
+
+.author-bio div {
+  flex-grow: 1; /* Allow text content to take up available space */
 }
 
 .author-bio h3 {
   font-size: 1.2rem;
   margin-bottom: 10px;
+  text-align: center; /* Center the heading on mobile */
 }
 
 .author-bio p {
   font-size: 0.9rem;
   line-height: 1.6;
 }
+
+/* Larger Screen Styles (Tablet and Desktop) */
+@media (min-width: 768px) {
+  .author-bio {
+    flex-direction: row; /* Align image and text horizontally on desktop */
+    align-items: center; /* Center items vertically on desktop */
+  }
+
+  .author-image {
+    margin-right: 20px; /* Add horizontal margin on desktop */
+    margin-bottom: 0; /* Remove bottom margin on desktop */
+  }
+
+  .author-bio h3 {
+    text-align: left; /* Align heading to the left on desktop */
+  }
+}
+
+/* ... other styles ... */
