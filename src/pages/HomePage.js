@@ -12,9 +12,20 @@ function HomePage() {
     setCurrentPage(1); // Reset to first page on new search
   };
 
-  const filteredPosts = blogPostData.filter((post) => {
-    const titleMatch = post.title.toLowerCase().includes(searchQuery.toLowerCase());
-    const tagMatch = post.tags && post.tags.some(tag => tag.toLowerCase().includes(searchQuery.toLowerCase()));
+  // Sort posts by date (newest to oldest)
+  const sortedPosts = [...blogPostData].sort((a, b) => {
+    return new Date(b.date) - new Date(a.date);
+  });
+
+  const filteredPosts = sortedPosts.filter((post) => {
+    const titleMatch = post.title
+      .toLowerCase()
+      .includes(searchQuery.toLowerCase());
+    const tagMatch =
+      post.tags &&
+      post.tags.some((tag) =>
+        tag.toLowerCase().includes(searchQuery.toLowerCase())
+      );
     return titleMatch || tagMatch;
   });
 
@@ -31,7 +42,7 @@ function HomePage() {
       <div className="search-bar">
         <input
           type="text"
-          placeholder="Search for a Blog Title or Tag..."
+          placeholder="Search blog posts..."
           value={searchQuery}
           onChange={handleSearchChange}
         />
@@ -50,7 +61,11 @@ function HomePage() {
                 key={i}
                 className={`page-item ${currentPage === i + 1 ? "active" : ""}`}
               >
-                <a onClick={() => paginate(i + 1)} href="#!" className="page-link">
+                <a
+                  onClick={() => paginate(i + 1)}
+                  href="#!"
+                  className="page-link"
+                >
                   {i + 1}
                 </a>
               </li>

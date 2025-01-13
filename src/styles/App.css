@@ -579,3 +579,38 @@ body {
   align-items: center;
   justify-content: center;
 }
+
+.post-navigation {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.previous-post,
+.next-post {
+  text-decoration: none;
+  color: #007bff; /* Or your preferred link color */
+}
+
+.previous-post:hover,
+.next-post:hover {
+  text-decoration: underline;
+}
+
+.author-bio {
+  margin-top: 40px; /* Add some space above the author bio */
+  padding: 20px;
+  border-top: 1px solid #eee; /* Add a separator line */
+  background-color: #f8f8f8; /* A light background color */
+  border-radius: 5px;
+}
+
+.author-bio h3 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.author-bio p {
+  font-size: 0.9rem;
+  line-height: 1.6;
+}

@@ -12,8 +12,10 @@ function About() {
       <div className="about-text">
         <h2>About Me</h2>
         <i>Technical Program Manager / Front End Engineer</i>
-        <p>A Technical Program Manager with a passion for technology and continuous learning, I have extensive experience leading complex projects and delivering impactful results. <br />
-        Recently, I’ve been expanding into front-end development, learning ReactJS and revisiting HTML, CSS, and JavaScript. This portfolio showcases my journey and reflects my commitment to bridging program management with software development.</p>
+        <p>I'm a seasoned Technical Program Manager with a proven track record of delivering complex, high-impact projects on time and within budget. My expertise spans strategic planning, risk management, stakeholder alignment, and driving execution excellence across cross-functional teams. I'm a passionate advocate for continuous learning and believe in the power of technology to transform the way we work and live.
+<br /><br />
+That belief has led me to embark on a deep dive into front-end development, fueled by a desire to understand the intricacies of building engaging user experiences. I'm actively learning ReactJS, strengthening my foundations in HTML, CSS, and JavaScript, and building projects to put my knowledge into practice.  This portfolio reflects my journey as a lifelong learner and showcases my commitment to bridging the gap between strategic program leadership and the hands-on world of front-end development. I believe this blend of skills will allow me to deliver even more impactful and user-focused solutions in the future.
+</p>
       </div>
     </section>
   );

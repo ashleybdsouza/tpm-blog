@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -283,6 +284,25 @@ function Post({ post }) {
                     </div>
         </div>
       </div>
+      {/* Navigation Links */}
+      <div className="post-navigation">
+        {post.previousPost && (
+            <Link to={`/post/${post.previousPost.slug}`} className="previous-post">
+            &larr; <b>Previous</b>: {post.previousPost.prevnext}
+            </Link>
+        )}
+        {post.nextPost && (
+            <Link to={`/post/${post.nextPost.slug}`} className="next-post"> 
+            <b>Next</b>: {post.nextPost.prevnext} &rarr;
+            </Link>
+        )}
+      </div>
+      {/* About the Author Section */}
+          <div className="author-bio">
+            <h3>About the Author</h3>
+            
+            <p className="preserve-newlines">{post.authorBio}</p>
+          </div>
     </div>
   );
 }
