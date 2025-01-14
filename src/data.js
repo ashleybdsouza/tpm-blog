@@ -7,7 +7,7 @@ const blogPostData = [
     slug: "influence-without-authority",
     author: "Ashley Dsouza",
     authorBio: `Ashley Dsouza is a seasoned Technical Program Manager with over 10 years of experience in the tech industry. He has a proven track record of leading complex, cross-functional projects to successful completion. Ashley is passionate about sharing his expertise in areas like stakeholder management, risk management, and dependency management to help other TPMs thrive.`,
-    authorImage: "/images/ashley-dsouza.jpg", // Add author image path
+    authorImage: "${process.env.PUBLIC_URL}/images/ashley-dsouza.jpg", // Add author image path
     date: "December 31, 2024",
     introduction:
       "As a Technical Program Manager, you're often tasked with driving complex projects across multiple teams, keeping them aligned, and ensuring timely delivery. Sounds like a job that requires a lot of authority, right? But the reality is that TPMs often have limited formal power. You're not managing these teams directly. You're not their boss. So, how do you get things done? The answer lies in your ability to influence without authority. This blog post will dive into practical strategies and tactics to master this crucial skill.",
@@ -126,7 +126,7 @@ Be Consistent: Be reliable and consistent in your behavior and decision-making.`
         slug: "risk-management",
         author: "Ashley Dsouza",
         authorBio: `Ashley Dsouza is a seasoned Technical Program Manager with over 10 years of experience in the tech industry. He has a proven track record of leading complex, cross-functional projects to successful completion. Ashley is passionate about sharing his expertise in areas like stakeholder management, risk management, and dependency management to help other TPMs thrive.`,
-        authorImage: "/images/ashley-dsouza.jpg", // Add author image path
+        authorImage: "${process.env.PUBLIC_URL}/images/ashley-dsouza.jpg", // Add author image path
         date: "December 1, 2024",
         introduction: "As a Technical Program Manager (TPM), you're the captain navigating a complex project through often-turbulent waters. Unexpected storms – in the form of risks – can arise at any moment, threatening to capsize your project or delay its arrival. That's why effective risk management isn't just a \"nice-to-have\" – it's an essential skill for every TPM. This blog post will equip you with the knowledge and tools to proactively identify, assess, mitigate, and monitor risks, keeping your projects on course and setting you up for success.",
         sections: [
@@ -421,7 +421,7 @@ In conclusion, a robust risk management process, spearheaded by the TPM, is not 
         slug: "stakeholder-management",
         author: "Ashley Dsouza",
         authorBio: `Ashley Dsouza is a seasoned Technical Program Manager with over 10 years of experience in the tech industry. He has a proven track record of leading complex, cross-functional projects to successful completion. Ashley is passionate about sharing his expertise in areas like stakeholder management, risk management, and dependency management to help other TPMs thrive.`,
-            authorImage: "/images/ashley-dsouza.jpg", // Add author image path
+            authorImage: "${process.env.PUBLIC_URL}/images/ashley-dsouza.jpg", // Add author image path
 
         date: "January 03, 2025",
         introduction: "As a Technical Program Manager (TPM), you're not just managing projects; you're managing relationships. Your stakeholders – the individuals and groups who have a vested interest in your project's outcome – can be your greatest allies or your biggest obstacles.  Effective stakeholder management is the art and science of identifying, understanding, and engaging these stakeholders to ensure their needs are met, their support is secured, and your project achieves its goals. This blog post will provide you with practical strategies for identifying and prioritizing key stakeholders, building strong relationships (even with difficult ones!), and keeping everyone engaged and informed throughout the project lifecycle.",
@@ -563,7 +563,7 @@ External: Customers, partners, vendors, regulatory bodies, industry analysts, co
         slug: "effective-meeting-facilitation",
         author: "Ashley Dsouza",
               authorBio: `Ashley Dsouza is a seasoned Technical Program Manager with over 10 years of experience in the tech industry. He has a proven track record of leading complex, cross-functional projects to successful completion. Ashley is passionate about sharing his expertise in areas like stakeholder management, risk management, and dependency management to help other TPMs thrive.`,
-            authorImage: "/images/ashley-dsouza.jpg", // Add author image path
+            authorImage: "${process.env.PUBLIC_URL}/images/ashley-dsouza.jpg", // Add author image path
 
         date: "January 05, 2025",
         introduction: `As Technical Program Managers (TPMs), we spend a significant portion of our time in meetings. Whether it's a daily stand-up, a stakeholder update, or a complex problem-solving session, meetings are essential for communication, collaboration, and decision-making. But let's be honest: how many of those meetings are truly productive?  Too often, meetings become time-sucks, derailing into tangents, lacking focus, and leaving attendees feeling frustrated and unproductive.
@@ -751,7 +751,7 @@ This blog post is your guide to mastering the art of meeting facilitation. We'll
         slug: "prioritization-frameworks",
         author: "Ashley Dsouza",
               authorBio: `Ashley Dsouza is a seasoned Technical Program Manager with over 10 years of experience in the tech industry. He has a proven track record of leading complex, cross-functional projects to successful completion. Ashley is passionate about sharing his expertise in areas like stakeholder management, risk management, and dependency management to help other TPMs thrive.`,
-            authorImage: "/images/ashley-dsouza.jpg", // Add author image path
+            authorImage: "${process.env.PUBLIC_URL}/images/ashley-dsouza.jpg", // Add author image path
 
         date: "January 13, 2025",
         introduction: `As a Technical Program Manager (TPM), you're constantly juggling competing demands, limited resources, and shifting priorities.  Knowing what to focus on and when is arguably the most critical skill you need to master.  Effective prioritization is the key to delivering impactful results, keeping your projects on track, and avoiding the pitfalls of overwhelm and burnout.  But with so many tasks, projects, and stakeholder requests vying for your attention, how do you decide where to focus your efforts?
