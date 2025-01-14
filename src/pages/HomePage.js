@@ -1,9 +1,16 @@
-import React, { useState } from "react";
-import PostList from "../components/PostList";
-import blogPostData from "../data";
+import React, { useState } from 'react';
+import PostList from '../components/PostList';
+import blogPostData from '../data';
+import { useLocation } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
 function HomePage() {
-  const [searchQuery, setSearchQuery] = useState("");
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const initialSearchQuery = queryParams.get('q') || '';
+
+  const [searchQuery, setSearchQuery] = useState(initialSearchQuery);
   const [currentPage, setCurrentPage] = useState(1);
   const postsPerPage = 5; // Number of posts to display per page
 
@@ -12,20 +19,19 @@ function HomePage() {
     setCurrentPage(1); // Reset to first page on new search
   };
 
-  // Sort posts by date (newest to oldest)
-  const sortedPosts = [...blogPostData].sort((a, b) => {
-    return new Date(b.date) - new Date(a.date);
-  });
+  const handleTagClick = (tag) => {
+    setSearchQuery(tag);
+    setCurrentPage(1); // Reset to first page when a tag is clicked
+  };
 
-  const filteredPosts = sortedPosts.filter((post) => {
-    const titleMatch = post.title
-      .toLowerCase()
-      .includes(searchQuery.toLowerCase());
-    const tagMatch =
-      post.tags &&
-      post.tags.some((tag) =>
-        tag.toLowerCase().includes(searchQuery.toLowerCase())
-      );
+  const clearSearch = () => {
+    setSearchQuery('');
+    setCurrentPage(1); // Reset to the first page when search is cleared
+  };
+
+  const filteredPosts = blogPostData.filter((post) => {
+    const titleMatch = post.title.toLowerCase().includes(searchQuery.toLowerCase());
+    const tagMatch = post.tags && post.tags.some(tag => tag.toLowerCase().includes(searchQuery.toLowerCase()));
     return titleMatch || tagMatch;
   });
 
@@ -46,9 +52,14 @@ function HomePage() {
           value={searchQuery}
           onChange={handleSearchChange}
         />
+        {searchQuery && (
+          <button className="clear-search" onClick={clearSearch}>
+            <FontAwesomeIcon icon={faTimes} />
+          </button>
+        )}
       </div>
       <div className="post-list">
-        <PostList posts={currentPosts} />
+        <PostList posts={currentPosts} onTagClick={handleTagClick} />
       </div>
 
       {/* Pagination */}
@@ -61,11 +72,7 @@ function HomePage() {
                 key={i}
                 className={`page-item ${currentPage === i + 1 ? "active" : ""}`}
               >
-                <a
-                  onClick={() => paginate(i + 1)}
-                  href="#!"
-                  className="page-link"
-                >
+                <a onClick={() => paginate(i + 1)} href="#!" className="page-link">
                   {i + 1}
                 </a>
               </li>

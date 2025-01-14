@@ -2,7 +2,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-function PostListItem({ post }) {
+function PostListItem({ post, onTagClick }) {
   return (
     <div>
       <h2>

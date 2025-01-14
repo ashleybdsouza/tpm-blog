@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { useLocation } from "react-router-dom"; // import useLocation
 
-function Post({ post }) {
+function Post({ post, onTagClick }) {
   const location = useLocation();
   const currentPath = location.pathname;
   // Generate TOC data
@@ -274,14 +274,14 @@ function Post({ post }) {
                 ))}
             </div>
           ))}
-                <div className="post-tags">
-                  <h3>Tags:</h3>
-                      {post.tags && post.tags.slice(0, 10).map((tag) => (
-                        <span key={tag} className="tag">
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
+            <div className="post-tags">
+              {post.tags &&
+                post.tags.slice(0, 5).map((tag) => (
+                  <Link to={`/?q=${tag}`} key={tag}>
+                    <span className="tag">{tag}</span>
+                  </Link>
+                ))}
+            </div>
         </div>
       </div>
       {/* Navigation Links */}
