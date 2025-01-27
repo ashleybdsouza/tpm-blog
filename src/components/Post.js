@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
+import rehypeRaw from 'rehype-raw';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { useLocation } from "react-router-dom"; // import useLocation
@@ -220,6 +221,7 @@ function Post({ post, onTagClick }) {
           <ReactMarkdown
             className="preserve-newlines"
             remarkPlugins={[remarkGfm]}
+            rehypePlugins={[rehypeRaw]}
           >
             {post.introduction}
           </ReactMarkdown>
@@ -232,6 +234,7 @@ function Post({ post, onTagClick }) {
               <ReactMarkdown
                 className="preserve-newlines"
                 remarkPlugins={[remarkGfm]}
+                rehypePlugins={[rehypeRaw]}
               >
                 {section.content}
               </ReactMarkdown>
@@ -240,6 +243,7 @@ function Post({ post, onTagClick }) {
                   <ReactMarkdown
                     className="preserve-newlines"
                     remarkPlugins={[remarkGfm]}
+                    rehypePlugins={[rehypeRaw]}
                   >
                     {"**Example:** " + section.example}
                   </ReactMarkdown>
@@ -257,6 +261,7 @@ function Post({ post, onTagClick }) {
                     <ReactMarkdown
                       className="preserve-newlines"
                       remarkPlugins={[remarkGfm]}
+                      rehypePlugins={[rehypeRaw]}  
                     >
                       {subsection.content}
                     </ReactMarkdown>
@@ -265,6 +270,7 @@ function Post({ post, onTagClick }) {
                         <ReactMarkdown
                           className="preserve-newlines"
                           remarkPlugins={[remarkGfm]}
+                          rehypePlugins={[rehypeRaw]}
                         >
                           {"**Example:** " + subsection.example}
                         </ReactMarkdown>
