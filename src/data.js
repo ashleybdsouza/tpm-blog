@@ -1093,8 +1093,8 @@ In essence, technical debt is a tool that can be used strategically, but it must
     {
         id: 8,
         title: "Scaling Agile: The TPM's Playbook for Orchestrating Large-Scale Transformation",
-        prevnext:"Technical Debt",
-        slug: "technical-debt",
+        prevnext:"Scaling Agile",
+        slug: "scaling-agile",
         author: "Ashley Dsouza",
         authorBio: `Ashley Dsouza is a seasoned Technical Program Manager with over 10 years of experience in the tech industry. He has a proven track record of leading complex, cross-functional projects to successful completion. Ashley is passionate about sharing his expertise in areas like stakeholder management, risk management, and dependency management to help other TPMs thrive.`,
         authorImage: `${process.env.PUBLIC_URL}/images/ashley-dsouza.jpg`, // Add author image path
