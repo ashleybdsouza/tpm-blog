@@ -2,7 +2,7 @@
 const blogPostData = [
   {
     id: 1,
-    title: "Influence Without Authority: A TPM's Guide to Success",
+    title: "  Influence Without Authority: A TPM's Guide to Success",
     prevnext:"Influence without Authority",
     slug: "influence-without-authority",
     author: "Ashley Dsouza",
