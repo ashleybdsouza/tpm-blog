@@ -1,5 +1,8 @@
 # Technical Program Manager Blog
 
+[Remote TPM](https://ashleybdsouza.github.io/tpm-blog/post/remote-tpm).
+Published on February 1, 2025
+
 [Scaling Agile](https://ashleybdsouza.github.io/tpm-blog/post/scaling-agile).
 Published on January 25, 2025
 

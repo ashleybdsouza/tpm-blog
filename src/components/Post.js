@@ -245,7 +245,7 @@ function Post({ post, onTagClick }) {
                     remarkPlugins={[remarkGfm]}
                     rehypePlugins={[rehypeRaw]}
                   >
-                    {"**Example:** " + section.example}
+                    {section.example}
                   </ReactMarkdown>
                 </blockquote>
               )}
@@ -272,7 +272,7 @@ function Post({ post, onTagClick }) {
                           remarkPlugins={[remarkGfm]}
                           rehypePlugins={[rehypeRaw]}
                         >
-                          {"**Example:** " + subsection.example}
+                          {subsection.example}
                         </ReactMarkdown>
                       </blockquote>
                     )}
