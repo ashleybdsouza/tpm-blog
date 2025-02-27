@@ -1,5 +1,14 @@
 # Technical Program Manager Blog
 
+[TPM Engineering Partnertship](https://ashleybdsouza.github.io/tpm-blog/post/tpm-engineering)
+Published on February 22, 2025
+
+[Driving Innovation](https://ashleybdsouza.github.io/tpm-blog/post/driving-innovation)
+Published on February 15, 2025
+
+[Crisis Management](https://ashleybdsouza.github.io/tpm-blog/post/crisis-management)
+Published on February 8, 2025
+
 [Remote TPM](https://ashleybdsouza.github.io/tpm-blog/post/remote-tpm)
 Published on February 1, 2025
 
